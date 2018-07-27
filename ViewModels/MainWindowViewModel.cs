@@ -9,8 +9,6 @@ namespace AvaloniaTest.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        // public string Greeting => "Hello World!";
-        // public string Greeting { get; } = "Hello World!";
         public string Greeting
         {
             get
