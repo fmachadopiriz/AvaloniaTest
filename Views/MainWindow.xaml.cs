@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using AvaloniaTest.ViewModels;
+using ReactiveUI;
 
 namespace AvaloniaTest.Views
 {
@@ -41,16 +44,22 @@ namespace AvaloniaTest.Views
             {
                 for (int col = 0; col < maxCol; col++)
                 {
-                    var btn = new Avalonia.Controls.Shapes.Rectangle
+                    var btn = new Avalonia.Controls.Button
                     {
                         [Grid.RowProperty] = row,
                         [Grid.ColumnProperty] = col,
-                        Fill = lstColores[i%lstColores.Count]
+                        //Fill = lstColores[i%lstColores.Count],
+                        Command = ReactiveCommand.Create<int>(RunTheThing),
+                        CommandParameter = i
                     };
                     i++;
                     grdMain.Children.Add(btn);
                 }
             }
+        }
+        void RunTheThing(int i)
+        {
+            Debug.Print("Hello from Button Number: " + i + "\n");
         }
     }
 }
