@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Reactive;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Avalonia.Reactive;
 using AvaloniaTest.ViewModels;
 using ReactiveUI;
 
@@ -13,6 +15,9 @@ namespace AvaloniaTest.Views
     public class MainWindow : Window
     {
         List<IBrush> lstColores;
+        //AvaloniaObservable<string> valorStringObservable = new AvaloniaObservable<string>(GetValue<int,string>, "descr");
+        //Func<string, string> convert = delegate(string s)
+        // { return s.ToUpper();};
         public MainWindow()
         {
             lstColores = new List<IBrush>();
@@ -26,7 +31,7 @@ namespace AvaloniaTest.Views
         private void InitializeComponent()
         {
             int maxRow = 3;
-            int maxCol = 3;
+            int maxCol = 5;
             AvaloniaXamlLoader.Load(this);
             int i = 0;
             var grdMain = this.FindControl<Grid>("grdMain");
@@ -50,7 +55,8 @@ namespace AvaloniaTest.Views
                         [Grid.ColumnProperty] = col,
                         //Fill = lstColores[i%lstColores.Count],
                         Command = ReactiveCommand.Create<int>(RunTheThing),
-                        CommandParameter = i
+                        CommandParameter = i,
+                        Content = i.ToString()
                     };
                     i++;
                     grdMain.Children.Add(btn);
