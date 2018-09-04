@@ -5,14 +5,14 @@ namespace AvaloniaTest.Models
 
     public class Phrase : IEnumerable
     {
-        private IList<Term> terms;
+        private IList<Word> terms;
 
         public Phrase()
         {
-            terms = new List<Term>();
+            terms = new List<Word>();
         }
 
-        Term this[int index]
+        Word this[int index]
         {
             get
             {
@@ -20,7 +20,7 @@ namespace AvaloniaTest.Models
             }
         }
 
-        public void AddTerm(Term term)
+        public void AddTerm(Word term)
         {
             terms.Add(term);
         }
@@ -31,7 +31,7 @@ namespace AvaloniaTest.Models
             return terms.GetEnumerator();
         }
 
-        public void RemoveTerm(Term term)
+        public void RemoveTerm(Word term)
         {
             terms.Remove(term);
         }

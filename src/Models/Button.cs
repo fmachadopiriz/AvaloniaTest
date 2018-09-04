@@ -4,9 +4,9 @@
     using System.Runtime.Serialization;
 
     [Serializable]
-    [KnownType(typeof(NextKeyboardCommand))]
+    [KnownType(typeof(NextGridCommand))]
 
-    public class Key : ISerializable
+    public class Button : ISerializable
     {
         public string Image { get; }
 
@@ -14,14 +14,14 @@
 
         public Command Command { get; }
 
-        public Key (string image, string text, Command command)
+        public Button (string image, string text, Command command)
         {
             this.Image = image;
             this.Text = text;
             this.Command = command;
         }
 
-        protected Key(SerializationInfo info, StreamingContext context)
+        protected Button(SerializationInfo info, StreamingContext context)
         {
             this.Image = info.GetValue(nameof(this.Image), typeof(string)) as string;
             this.Text = info.GetValue(nameof(this.Text), typeof(string)) as string;

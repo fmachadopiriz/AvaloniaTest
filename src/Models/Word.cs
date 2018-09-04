@@ -3,11 +3,11 @@
     using System;
 
 
-    public class Term
+    public class Word
     {
         public string Value { get; }
 
-        public Term (string value)
+        public Word (string value)
         {
             this.Value = value;
         }
